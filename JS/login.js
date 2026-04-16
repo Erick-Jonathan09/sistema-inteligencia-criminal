@@ -29,7 +29,7 @@ loginForm.addEventListener('submit', async (e) => {
         });
 
         // 4. Redirigir al sistema central
-        window.location.href = "home/index.html"; 
+        window.location.href = "Home/index.html"; 
 
     } catch (error) {
         console.error("Error de acceso:", error.code);
