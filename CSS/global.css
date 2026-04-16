@@ -1,0 +1,562 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET
+   ========================================================================== */
+:root {
+    --primary-blue: #34aadc;
+    --dark-bg: #1a2332;
+    --input-bg: #0d1117;
+    --text-gray: #7f8c8d;
+    --danger-red: #e74c3c;
+    --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    background-color: #1a1a1a;
+    color: white;
+}
+
+/* ==========================================================================
+   2. COMPONENTES GLOBALES
+   ========================================================================== */
+.btn-primary {
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ==========================================================================
+   3. LOGIN
+   ========================================================================== */
+.page-login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background-color: var(--dark-bg);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid var(--primary-blue);
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+.login-card h1 {
+    color: var(--primary-blue);
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.login-card .subtitle {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 35px;
+}
+
+.login-card .input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-card label {
+    display: block;
+    color: var(--primary-blue);
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--input-bg);
+    border: 1px solid #2c3e50;
+    border-radius: 6px;
+    color: white;
+    outline: none;
+}
+
+.login-card input:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 5px var(--primary-blue);
+}
+
+.login-card .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-blue);
+    border-radius: 10px;
+    color: var(--dark-bg);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.login-card .footer-warning {
+    color: var(--danger-red);
+    font-size: 11px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 16px;
+    background-color: #34aadc;
+    color: #1a2332;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: transform 0.1s ease, background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #4cc2f1;
+    box-shadow: 0 0 15px rgba(52, 170, 220, 0.4);
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   4. DASHBOARD
+   ========================================================================== */
+.page-dashboard {
+    background-color: #0b0e14;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.logo-area h2 { color: var(--primary-blue); font-size: 18px; }
+.logo-area p  { color: var(--text-gray); font-size: 10px; }
+
+.user-area  { text-align: right; }
+.user-name  { display: block; font-weight: bold; font-size: 14px; }
+.user-role  { color: #f39c12; font-size: 12px; font-weight: bold; }
+
+.filters-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    background: #1a2332;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.filter-input {
+    background: #0d1117;
+    border: 1px solid #34aadc66;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.btn-filter {
+    background: var(--primary-blue);
+    color: #1a2332;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.criminals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.criminal-card {
+    background-color: #1a2332;
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.criminal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(52, 170, 220, 0.3);
+}
+
+.card-img {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid var(--primary-blue);
+}
+
+.card-content { padding: 15px; }
+
+.card-content h3 {
+    font-size: 14px;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.real-name {
+    font-size: 11px;
+    color: var(--text-gray);
+    margin-bottom: 10px;
+}
+
+.status-tags { margin-bottom: 15px; }
+
+.tag-status {
+    display: block;
+    color: #e74c3c;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.tag-threat {
+    display: inline-block;
+    background: #3a2a1a;
+    color: #f39c12;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    border: 1px solid #f39c12;
+    margin-top: 5px;
+}
+
+.btn-view {
+    width: 100%;
+    background-color: #34aadc;
+    color: #1a2332;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   5. COMPLEMENTOS MODAL
+   ========================================================================== */
+.badge-exp {
+    margin-left: 15px;
+    background: #e67e22;
+    color: #111;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.quick-stats-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.stat-line {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.stat-line strong {
+    color: #3498db;
+    display: inline-block;
+    width: 150px;
+}
+
+.stat-line span { color: #e0e0e0; }
+
+/* ==========================================================================
+   6. MODAL OVERLAY
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 15, 25, 0.95);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+/* *** LA CLAVE: height fija + display flex columna *** */
+.modal-container-record {
+    background: #101620;
+    width: 900px;
+    max-width: 95%;
+    height: 90vh;        /* <-- ALTURA FIJA, no max-height */
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* header arriba, body abajo */
+    animation: modalAparecer 0.3s ease-out;
+}
+
+@keyframes modalAparecer {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.record-header {
+    background: #1a253a;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    flex-shrink: 0; /* nunca se encoge */
+}
+
+.record-header h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #e0e0e0;
+}
+
+.btn-close-record {
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-close-record:hover { color: white; }
+
+/* *** record-body ocupa todo el espacio restante *** */
+.record-body {
+    display: flex;
+    padding: 20px;
+    flex: 1;          /* ocupa el alto restante tras el header */
+    overflow: hidden; /* sus hijos son los que scrollean */
+    min-height: 0;    /* CRÍTICO en flex para que funcione el scroll */
+}
+
+/* ==========================================================================
+   7. ASIDE IZQUIERDO
+   ========================================================================== */
+.record-aside {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
+    border-right: 1px solid #222;
+    overflow-y: auto;   /* scroll si el contenido es muy alto */
+    scrollbar-width: thin;
+    scrollbar-color: #3498db #111;
+}
+
+.record-aside::-webkit-scrollbar { width: 5px; }
+.record-aside::-webkit-scrollbar-track { background: #111; }
+.record-aside::-webkit-scrollbar-thumb { background: #3498db; border-radius: 10px; }
+
+.record-mugshot {
+    width: 220px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid #3498db;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.record-alias {
+    color: #3498db;
+    margin: 0 0 5px 0;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.record-nombre {
+    color: #aaa;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+.record-status { font-weight: bold; font-size: 0.9rem; }
+
+.record-stat-line {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 3px;
+    text-align: left;
+    width: 100%;
+}
+
+.record-stat-line strong {
+    color: #3498db;
+    display: inline-block;
+}
+
+.record-threat-area { margin-top: 20px; text-align: center; }
+.threat-label { color: #888; font-size: 0.8rem; margin-bottom: 10px; }
+
+.record-status-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 5px solid;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.record-status-circle span { font-weight: bold; font-size: 1.1rem; }
+
+.state-critical { background: #801313; border-color: transparent; color: white; box-shadow: 0 0 15px #ff0000a1; }
+.state-high     { background: transparent; border-color: #e67e22; color: #e67e22; }
+.state-medium   { background: transparent; border-color: #f1c40f; color: #f1c40f; }
+.state-low      { background: transparent; border-color: #2ecc71; color: #2ecc71; }
+
+/* ==========================================================================
+   8. CONTENIDO DERECHO — SCROLL AQUÍ
+   ========================================================================== */
+
+/* Contenedor derecho: flex columna, NO scrollea él mismo */
+.record-content {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* el scroll está en el hijo */
+}
+
+/* Este div SÍ scrollea */
+.text-sections-scroll {
+    flex: 1;
+    min-height: 0;     /* CRÍTICO */
+    overflow-y: scroll; /* fuerza el scroll siempre visible */
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #3498db #111;
+}
+
+.text-sections-scroll::-webkit-scrollbar { width: 6px; }
+.text-sections-scroll::-webkit-scrollbar-track { background: #111; }
+.text-sections-scroll::-webkit-scrollbar-thumb { background: #3498db; border-radius: 10px; }
+
+.text-block { margin-bottom: 25px; }
+
+.text-block h4 {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    margin: 0 0 10px 0;
+    display: inline-block;
+}
+
+.text-block p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    color: #e0e0e0;
+}
+
+/* ==========================================================================
+   9. GAUGE / VELOCÍMETRO
+   ========================================================================== */
+.gauge-wrapper {
+    position: relative;
+    width: 160px;
+    height: 80px;
+    overflow: hidden;
+    margin: 15px auto 0 auto;
+}
+
+.gauge-base,
+.gauge-fill {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 18px solid #222;
+    box-sizing: border-box;
+    border-bottom-color: transparent !important;
+    border-right-color: transparent !important;
+}
+
+.gauge-base { transform: rotate(45deg); }
+
+.gauge-fill {
+    transform: rotate(-135deg);
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s;
+}
+
+.gauge-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   10. BARRA DE VÍCTIMAS
+   ========================================================================== */
+.record-victims-bar {
+    flex-shrink: 0; /* nunca se encoge */
+    background: #182235;
+    border-radius: 6px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 350px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-bottom: 0;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+
+.record-victims-bar span { font-weight: bold; color: #888; }
+.victims-number { color: #e67e22 !important; font-size: 1.2rem; }
