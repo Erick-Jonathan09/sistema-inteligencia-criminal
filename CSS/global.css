@@ -207,11 +207,21 @@ body {
     box-shadow: 0 0 15px rgba(52, 170, 220, 0.3);
 }
 
+/* --- CONFIGURACIÓN TÁCTICA PARA LA FOTO DE LA TARJETA --- */
 .card-img {
-    height: 180px;
-    background-size: cover;
-    background-position: center;
-    border-bottom: 1px solid var(--primary-blue);
+    width: 100%; /* Obliga a la foto a tomar todo el ancho disponible */
+    height: 220px; /* Altura fija para que todas las tarjetas midan lo mismo */
+    object-fit: cover; /* REGLA DE ORO: Recorta la imagen sin aplastarla ni estirarla */
+    object-position: center 10%; /* Enfoca el encuadre hacia el rostro del sujeto */
+    display: block;
+    background-color: #1a1a24; /* Color oscuro por si la imagen tarda en cargar */
+    
+    /* Redondea las esquinas superiores para que coincidan con la tarjeta */
+    border-top-left-radius: 6px; 
+    border-top-right-radius: 6px;
+    
+    /* Opcional: una línea de separación entre la foto y los datos */
+    border-bottom: 2px solid #00a8ff; 
 }
 
 .card-content { padding: 15px; }
