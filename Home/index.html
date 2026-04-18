@@ -20,94 +20,96 @@
     </header>
 
     <section class="filters-container">
-        <input type="text" placeholder="N° Expediente..." class="filter-input">
-        <input type="text" placeholder="Apodo..." class="filter-input">
-        <select class="filter-input">
+        <input type="text" id="filtro-exp" placeholder="N° Expediente..." class="filter-input">
+        <input type="text" id="filtro-apodo" placeholder="Apodo..." class="filter-input">
+        
+        <select id="filtro-estado" class="filter-input">
             <option value="">Estado (Todos)</option>
             <option value="fallecido">Fallecido</option>
             <option value="detenido">Detenido</option>
         </select>
-        <select class="filter-input">
+        
+        <select id="filtro-amenaza" class="filter-input">
             <option value="">Nivel de Amenaza</option>
             <option value="critico">Crítico</option>
             <option value="alto">Alto</option>
             <option value="medio">Medio</option>
+            <option value="bajo">Bajo</option>
         </select>
-        <button class="btn-filter">BUSCAR</button>
+        
+        <button id="btn-buscar" class="btn-filter">BUSCAR</button>
     </section>
 
     <main class="criminals-grid">
         </main>
 
     <div id="modal-expediente" class="modal-overlay" style="display: none;">
-    <div class="modal-container-record">
-        
-        <header class="record-header">
-            <div class="header-left">
-                <span class="file-icon">🗂️</span>
-                <span id="modal-exp-num" class="badge-exp">EXP: 000</span>
-            </div>
-            <button onclick="cerrarModal()" class="btn-close-record">✕</button>
-        </header>
-
-        <div class="record-body">
-            <aside class="record-aside">
-                <div id="modal-img" class="record-mugshot"></div>
-                
-                <h2 id="modal-alias" class="record-alias">ALIAS</h2>
-                <h3 id="modal-nombre" class="record-nombre">NOMBRE REAL</h3>
-                <p class="record-status">ESTADO: <span id="modal-estado-valor">...</span></p>
-                
-                <p class="record-stat-line"><strong>TIPO DE ASESINO:</strong> <span id="modal-tipo">...</span></p>
-                <p class="record-stat-line"><strong>PERFIL:</strong> <span id="modal-perfil">...</span></p>
-                <p class="record-stat-line"><strong>CARACTERÍSTICAS:</strong> <span id="modal-caracteristicas">...</span></p>
-
-                <div class="record-threat-area">
-                    <p class="threat-label">NIVEL DE AMENAZA</p>
-                    <div class="gauge-wrapper">
-                        <div class="gauge-base"></div>
-                        <div id="modal-gauge-fill" class="gauge-fill"></div>
-                        <div class="gauge-text" id="modal-threat-text">...</div>
-                    </div>
+        <div class="modal-container-record">
+            
+            <header class="record-header">
+                <div class="header-left">
+                    <span class="file-icon">🗂️</span>
+                    <span id="modal-exp-num" class="badge-exp">EXP: 000</span>
                 </div>
-            </aside>
+                <button onclick="cerrarModal()" class="btn-close-record">✕</button>
+            </header>
 
-            <!-- ✅ QUITAMOS los styles inline y usamos solo la clase -->
-            <section class="record-content" style="flex:1; display:flex; flex-direction:column; min-height:0; overflow:hidden; padding-left:20px;">
+            <div class="record-body">
+                <aside class="record-aside">
+                    
+                    <img id="modal-img" class="record-mugshot" src="" alt="Fotografía del criminal">
+                    
+                    <h2 id="modal-alias" class="record-alias">ALIAS</h2>
+                    <h3 id="modal-nombre" class="record-nombre">NOMBRE REAL</h3>
+                    <p class="record-status">ESTADO: <span id="modal-estado-valor">...</span></p>
+                    
+                    <p class="record-stat-line"><strong>TIPO DE ASESINO:</strong> <span id="modal-tipo">...</span></p>
+                    <p class="record-stat-line"><strong>PERFIL:</strong> <span id="modal-perfil">...</span></p>
+                    <p class="record-stat-line"><strong>CARACTERÍSTICAS:</strong> <span id="modal-caracteristicas">...</span></p>
 
-    <div class="text-sections-scroll" style="flex:1; overflow-y:auto; min-height:0; padding-right:10px;">
+                    <div class="record-threat-area">
+                        <p class="threat-label">NIVEL DE AMENAZA</p>
+                        <div class="gauge-wrapper">
+                            <div class="gauge-base"></div>
+                            <div id="modal-gauge-fill" class="gauge-fill"></div>
+                            <div class="gauge-text" id="modal-threat-text">...</div>
+                        </div>
+                    </div>
+                </aside>
 
-        <div class="text-block">
-            <h4>PERFIL PSICOSOCIAL Y CLÍNICO</h4>
-            <p id="modal-psicosocial">Cargando perfil...</p>
+                <section class="record-content" style="flex:1; display:flex; flex-direction:column; min-height:0; overflow:hidden; padding-left:20px;">
+
+                    <div class="text-sections-scroll" style="flex:1; overflow-y:auto; min-height:0; padding-right:10px;">
+                        <div class="text-block">
+                            <h4>PERFIL PSICOSOCIAL Y CLÍNICO</h4>
+                            <p id="modal-psicosocial">Cargando perfil...</p>
+                        </div>
+                        
+                        <div class="text-block">
+                            <h4>RESEÑA DELICTIVA</h4>
+                            <p id="modal-resena">Cargando reseña...</p>
+                        </div>
+
+                        <div class="text-block">
+                            <h4>DINÁMICA DELICTIVA</h4>
+                            <p id="modal-dinamica">Cargando dinámica...</p>
+                        </div>
+
+                        <div class="text-block">
+                            <h4>MOTIVACIÓN</h4>
+                            <p id="modal-motivacion">Cargando motivación...</p>
+                        </div>
+                    </div>
+
+                    <div class="record-victims-bar">
+                        <span>TOTAL DE VÍCTIMAS:</span>
+                        <span id="modal-victimas" class="victims-number">0</span>
+                    </div>
+
+                </section>
+            </div>
         </div>
-        
-        <div class="text-block">
-            <h4>RESEÑA DELICTIVA</h4>
-            <p id="modal-resena">Cargando reseña...</p>
-        </div>
-
-        <div class="text-block">
-            <h4>DINÁMICA DELICTIVA</h4>
-            <p id="modal-dinamica">Cargando dinámica...</p>
-        </div>
-
-        <div class="text-block">
-            <h4>MOTIVACIÓN</h4>
-            <p id="modal-motivacion">Cargando motivación...</p>
-        </div>
-
     </div>
-
-    <div class="record-victims-bar">
-        <span>TOTAL DE VÍCTIMAS:</span>
-        <span id="modal-victimas" class="victims-number">0</span>
-    </div>
-
-</section>
-        </div>
-    </div>
-</div>
 
     <script type="module" src="../JS/firebase-config.js"></script>
     <script type="module" src="../JS/main.js"></script>
